@@ -23,6 +23,5 @@ RDEPEND="app-text/hunpos
 	dev-python/nltk
 	sci-mathematics/FastCommunity
 	sci-mathematics/FastCommunity_w
-	sci-visualization/lgl[java]
-	www-servers/tornado"
+	sci-visualization/lgl[java]"
 DEPEND="${RDEPEND}"
