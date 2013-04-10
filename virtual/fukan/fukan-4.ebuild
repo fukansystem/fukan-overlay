@@ -21,6 +21,7 @@ RDEPEND="app-text/hunpos
 	dev-python/mechanize
 	dev-python/msgpack
 	dev-python/nltk
+	dev-python/nose
 	dev-python/pyparsing
 	dev-python/sphinx
 	=sci-libs/scipy-0.11*
