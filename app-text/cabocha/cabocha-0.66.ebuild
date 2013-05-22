@@ -16,7 +16,7 @@ KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="perl python unicode"
 
 DEPEND=">=app-text/crf++-0.55
-	app-text/mecab"
+	>=app-text/mecab-0.993"
 
 src_configure() {
 	local myargs=""
