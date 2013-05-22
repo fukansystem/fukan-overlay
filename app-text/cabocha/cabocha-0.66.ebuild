@@ -57,7 +57,7 @@ src_install() {
 	fi
 	if use python ; then
 		pushd python
-		distutils_src_compile || die
+		distutils_src_install || die
 		popd
 	fi
 }
