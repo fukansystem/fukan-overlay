@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="+pep8"
 
-RDEPEND="app-text/cabocha
+RDEPEND="app-text/cabocha[python]
 	app-text/hunpos
 	app-text/pdfminer[cjk]
 	=dev-lang/python-2*
