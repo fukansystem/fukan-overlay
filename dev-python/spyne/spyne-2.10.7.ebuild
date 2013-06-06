@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="django json msgpack xml yaml"
 
-RDEPEND="virtual/pyparsing
+RDEPEND="dev-python/pytz
+	virtual/pyparsing
 	django? ( >=dev-python/django-1.2 )
 	json? ( dev-python/simplejson )
 	msgpack? ( dev-python/msgpack )
