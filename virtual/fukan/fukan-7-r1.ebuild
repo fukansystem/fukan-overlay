@@ -19,7 +19,6 @@ RDEPEND="app-text/cabocha[python]
 	=dev-lang/python-2*
 	dev-python/beautifulsoup:python-2
 	dev-python/django
-	dev-python/imaging
 	dev-python/kyotocabinet-python-legacy
 	dev-python/mechanize
 	dev-python/msgpack
@@ -33,5 +32,6 @@ RDEPEND="app-text/cabocha[python]
 	sci-mathematics/FastCommunity
 	sci-mathematics/FastCommunity_w
 	sci-visualization/lgl[java]
-	pep8? ( dev-python/pep8 )"
+	pep8? ( dev-python/pep8 )
+	virtual/python-imaging"
 DEPEND="${RDEPEND}"
