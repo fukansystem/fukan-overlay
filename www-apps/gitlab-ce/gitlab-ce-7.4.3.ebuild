@@ -10,7 +10,7 @@ DESCRIPTION="Open source software to collaborate on code"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitlab-ce"
 SRC_URI=
 EGIT_REPO_URI="https://gitlab.com/gitlab-org/gitlab-ce.git"
-EGIT_BRANCH="v${PV}"
+EGIT_COMMIT="v${PV}"
 
 LICENSE="MIT"
 SLOT="0"
