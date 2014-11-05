@@ -1,0 +1,24 @@
+--- src/utils.cpp.0	2014-11-05 07:00:35.226098128 +0000
++++ src/utils.cpp	2014-11-05 07:02:45.201890839 +0000
+@@ -3,10 +3,6 @@
+ //  $Id: utils.cpp 50 2009-05-03 08:25:36Z taku-ku $;
+ //
+ //  Copyright(C) 2001-2008 Taku Kudo <taku@chasen.org>
+-#ifdef HAVE_UNISTD_H
+-#include <unistd.h>
+-#endif
+-
+ #include <iostream>
+ #include <fstream>
+ #include <cstring>
+@@ -15,8 +11,8 @@
+ #include "scoped_ptr.h"
+ #include "utils.h"
+ 
+-#ifdef HAVE_CONFIG_H
+-#include "config.h"
++#ifdef HAVE_UNISTD_H
++#include <unistd.h>
+ #endif
+ 
+ namespace CaboCha {

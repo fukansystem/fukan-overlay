@@ -18,6 +18,10 @@ IUSE="perl python unicode"
 DEPEND=">=app-text/crf++-0.55
 	>=app-text/mecab-0.993"
 
+src_prepare() {
+  epatch "${FILESDIR}"/${P}-unistd.patch
+}
+
 src_configure() {
 	local myargs=""
 	if use unicode; then
