@@ -2,4 +2,9 @@
 
 ## Usage
 
-Add <code>http://github.com/fukansystem/fukan-overlay/raw/master/repository.xml</code> to <code>overlays</code> at <code>/etc/layman/layman.cfg</code>.
+Add <code>http://github.com/fukansystem/fukan-overlay/raw/master/repository.xml</code> to <code>overlays</code> at <code>/etc/layman/layman.cfg</code> and then
+
+```shell
+$ layman -S
+$ layman -a fukan-overlay
+```
