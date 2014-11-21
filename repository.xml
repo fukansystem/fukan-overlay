@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>fukan-overlay</name>
+    <description lang="en">Portage overlay for fukan project.</description>
+    <homepage>https://github.com/fukansystem/fukan-overlay</homepage>
+    <owner type="person">
+      <email>kiyoya@gmail.com</email>
+      <name>kiyoya</name>
+    </owner>
+    <source type="git">https://github.com/fukansystem/fukan-overlay.git</source>
+    <feed>http://github.com/fukansystem/fukan-overlay/commits/master.atom</feed>
+  </repo>
+</repositories>
