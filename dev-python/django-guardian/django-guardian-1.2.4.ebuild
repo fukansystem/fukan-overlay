@@ -19,6 +19,7 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}
 	>=dev-python/django-1.2[${PYTHON_USEDEP}]
+  dev-python/six[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
