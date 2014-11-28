@@ -19,6 +19,7 @@ RDEPEND="app-text/cabocha[python]
 	=dev-lang/python-2*
 	dev-python/beautifulsoup:python-2
 	dev-python/django
+  dev-python/django-guardian
 	dev-python/flup
 	dev-python/kyotocabinet-python-legacy
 	dev-python/mechanize
@@ -27,6 +28,7 @@ RDEPEND="app-text/cabocha[python]
 	dev-python/nltk
 	dev-python/nose
 	dev-python/pyparsing
+  dev-python/py-xlsx
 	dev-python/sphinx
 	dev-python/suds
 	>=sci-libs/scipy-0.11
