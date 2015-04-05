@@ -37,6 +37,7 @@ RDEPEND="app-text/cabocha[python]
 	sci-mathematics/FastCommunity
 	sci-mathematics/FastCommunity_w
 	sci-visualization/lgl
+  sys-devel/gettext
 	pep8? ( dev-python/pep8 )
 	virtual/python-imaging"
 DEPEND="${RDEPEND}"
