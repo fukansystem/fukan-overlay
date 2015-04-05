@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit eutils toolchain-funcs java-pkg-2
+inherit eutils toolchain-funcs java-pkg-opt-2
 
 MY_PN="LGL"
 
