@@ -8,9 +8,11 @@ RESTRICT_PYTHON_ABIS="3.* *-jython"
 
 inherit flag-o-matic eutils distutils perl-module
 
+G_KEY="0B4y35FiV1wh7cGRCUUJHVTNJRnM"
+
 DESCRIPTION="Yet Another Japanese Dependency Structure Analyzer"
 HOMEPAGE="http://code.google.com/p/cabocha/"
-SRC_URI="http://cabocha.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="http://googledrive.com/host/${G_KEY}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
