@@ -40,5 +40,5 @@ RDEPEND="
   sci-mathematics/FastCommunity_w
   sci-visualization/lgl
   sys-devel/gettext
-  virtual/python-imaging
+  virtual/python-imaging"
 DEPEND="${RDEPEND}"
