@@ -25,12 +25,11 @@ DEPEND=">=app-text/crf++-0.55
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-unistd.patch
 	if use python; then
 		pushd python || die
 		python_convert_shebangs -r 2 .
-	distutils_src_prepare
-	popd || die
+		distutils_src_prepare
+		popd || die
 	fi
 }
 
