@@ -20,6 +20,7 @@ IUSE="perl python unicode"
 
 DEPEND=">=app-text/crf++-0.55
 	>=app-text/mecab-0.993"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-unistd.patch
