@@ -1,6 +1,6 @@
 app-text/cabocha python
 app-text/pdfminer cjk
-dev-lang/python sqlite tk
+dev-lang/python sqlite
 dev-python/django sqlite
 dev-python/nltk numpy
 dev-python/numpy lapack
