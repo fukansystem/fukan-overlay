@@ -11,7 +11,7 @@ SRC_URI=""
 LICENSE=""
 SLOT="2"
 KEYWORDS="amd64 x86 amd64-linux x86-linux x64-macos x86-macos"
-IUSE="doc test"
+IUSE="doc unittest"
 
 RDEPEND="
 	app-text/hunpos
@@ -38,6 +38,6 @@ RDEPEND="
 	sys-devel/gettext
 	doc? (
 		dev-python/sphinx )
-	test? (
+	unittest? (
 		dev-python/pep8 ) "
-DEPEND="${RDEPEND}"
+DEPEND=""
