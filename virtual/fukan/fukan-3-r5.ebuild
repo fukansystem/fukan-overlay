@@ -11,11 +11,10 @@ SRC_URI=""
 LICENSE=""
 SLOT="3"
 KEYWORDS="amd64 x86 amd64-linux x86-linux x64-macos x86-macos"
-IUSE="doc test"
+IUSE="doc unittest"
 
 RDEPEND="
 	app-text/cabocha[python]
-	app-text/hunpos
 	app-text/pdfminer[cjk]
 	=dev-lang/python-2*
 	dev-python/beautifulsoup:python-2
@@ -41,7 +40,7 @@ RDEPEND="
 	sys-devel/gettext
 	doc? (
 		dev-python/sphinx )
-	test? (
+	unittest? (
 		dev-python/pep8
 		net-misc/rabbitmq-server )"
 DEPEND=""
