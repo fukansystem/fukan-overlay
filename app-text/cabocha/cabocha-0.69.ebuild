@@ -6,13 +6,14 @@ PYTHON_DEPEND="python? 2"
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="3.* *-jython"
 
-inherit flag-o-matic eutils distutils perl-module
+inherit autotools flag-o-matic eutils distutils perl-module
 
 G_KEY="0B4y35FiV1wh7cGRCUUJHVTNJRnM"
 
 DESCRIPTION="Yet Another Japanese Dependency Structure Analyzer"
 HOMEPAGE="http://code.google.com/p/cabocha/"
-SRC_URI="http://googledrive.com/host/${G_KEY}/${P}.tar.bz2"
+GIT_COMMIT="7e7d4decefb2a5e7db3f56e75fe1aa14e723c767"
+SRC_URI="https://github.com/taku910/cabocha/archive/${GIT_COMMIT}.zip"
 
 LICENSE="BSD"
 SLOT="0"
@@ -24,7 +25,13 @@ DEPEND=">=app-text/crf++-0.55
 	>=app-text/mecab-0.993"
 RDEPEND="${DEPEND}"
 
+src_unpack() {
+  unpack "${A}"
+  mv cabocha-"${GIT_COMMIT}" "${P}"
+}
+
 src_prepare() {
+  eautoreconf
 	if use python; then
 		pushd python || die
 		python_convert_shebangs -r 2 .
