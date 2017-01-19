@@ -19,6 +19,8 @@ RDEPEND="
 	dev-python/nltk
 	dev-python/ordered-set
   dev-python/pillow
+	dev-python/pymongo
+  dev-python/six
 	>=sci-libs/scipy-0.11
 	sci-mathematics/bayon
 	sci-mathematics/FastCommunity
