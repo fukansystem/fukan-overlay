@@ -11,37 +11,37 @@ IUSE="crawler doc experimental +fastcgi +postgres unittest"
 
 RDEPEND="
 	=dev-lang/python-2*
-  dev-python/celery
+	dev-python/celery
 	dev-python/django
 	dev-python/django-guardian
 	dev-python/kyotocabinet-python-legacy
 	dev-python/msgpack
 	dev-python/nltk
 	dev-python/ordered-set
-  dev-python/pillow
+	dev-python/pillow
 	dev-python/pymongo
-  dev-python/six
+	dev-python/six
 	>=sci-libs/scipy-0.11
 	sci-mathematics/bayon
 	sci-mathematics/FastCommunity
 	sci-mathematics/FastCommunity_w
 	sci-visualization/lgl
 	sys-devel/gettext
-  crawler? (
-    dev-python/beautifulsoup:python-2
-    dev-python/mechanize
-    dev-python/suds )
+	crawler? (
+		dev-python/beautifulsoup:python-2
+		dev-python/mechanize
+		dev-python/suds )
 	doc? (
 		dev-python/sphinx )
-  experimental? (
-    app-text/cabocha[python]
-    app-text/pdfminer[cjk]
-    dev-python/pyparsing
-    dev-python/py-xlsx )
-  fastcgi? (
-    dev-python/flup )
-  postgres? (
-    dev-python/psycopg:2 )
+	experimental? (
+		app-text/cabocha[python]
+		app-text/pdfminer[cjk]
+		dev-python/pyparsing
+		dev-python/py-xlsx )
+	fastcgi? (
+		dev-python/flup )
+	postgres? (
+		dev-python/psycopg:2 )
 	unittest? (
 		dev-python/pep8 )"
 DEPEND=""
