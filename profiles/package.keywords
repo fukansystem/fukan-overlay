@@ -14,6 +14,5 @@ dev-python/numpy ~amd64
 dev-python/pep8 ~amd64
 dev-python/south ~amd64
 dev-python/spyne ~amd64
-sci-libs/scikits ~amd64
 sci-libs/scikits_learn ~amd64
 sci-libs/scipy ~amd64

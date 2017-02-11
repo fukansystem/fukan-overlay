@@ -22,6 +22,7 @@ RDEPEND="
 	dev-python/pymongo
 	dev-python/six
 	>=sci-libs/scipy-0.11
+	sci-libs/scikits_learn
 	sci-mathematics/bayon
 	sci-mathematics/FastCommunity
 	sci-mathematics/FastCommunity_w
