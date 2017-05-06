@@ -1,17 +1,17 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_DEPEND="python? 2"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.* *-jython"
+EAPI="5"
 
-inherit autotools flag-o-matic eutils distutils perl-module
+PYTHON_COMPAT=( python2_{6,7} )
+DISTUTILS_OPTIONAL=1
+
+inherit autotools flag-o-matic eutils distutils-r1 perl-module
 
 G_KEY="0B4y35FiV1wh7cGRCUUJHVTNJRnM"
 
 DESCRIPTION="Yet Another Japanese Dependency Structure Analyzer"
-HOMEPAGE="http://code.google.com/p/cabocha/"
+HOMEPAGE="https://taku910.github.io/cabocha/"
 GIT_COMMIT="7e7d4decefb2a5e7db3f56e75fe1aa14e723c767"
 SRC_URI="https://github.com/taku910/cabocha/archive/${GIT_COMMIT}.zip"
 
@@ -21,12 +21,19 @@ KEYWORDS="amd64 x86 amd64-linux x86-linux x64-macos x86-macos"
 
 IUSE="perl python unicode"
 
-DEPEND=">=app-text/crf++-0.55
-	>=app-text/mecab-0.993"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	>=app-text/crf++-0.55
+	>=app-text/mecab-0.993
+	python? ( ${PYTHON_DEPS} )"
+DEPEND="${RDEPEND}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+pkg_setup() {
+	use python && python_setup
+}
 
 src_unpack() {
-  unpack "${A}"
+	default
   mv cabocha-"${GIT_COMMIT}" "${P}"
 }
 
@@ -34,8 +41,7 @@ src_prepare() {
   eautoreconf
 	if use python; then
 		pushd python || die
-		python_convert_shebangs -r 2 .
-		distutils_src_prepare
+		distutils-r1_src_prepare
 		popd || die
 	fi
 }
@@ -49,8 +55,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die
-
+	default
 	if use perl ; then
 		pushd perl || die
 		perl-module_src_compile
@@ -59,22 +64,17 @@ src_compile() {
 	if use python ; then
 		export PATH="${S}:${PATH}"
 		pushd python || die
+		python_fix_shebang .
 		append-cppflags "-I${S}/src"
 		append-ldflags "-L${S}/src/.libs"
-		distutils_src_compile
+		distutils-r1_src_compile
 		popd || die
 	fi
 }
 
-src_test() {
-	make check || die
-}
-
 src_install() {
-	emake DESTDIR=${D} install || die
-
-	dodoc AUTHORS README TODO
-
+	emake DESTDIR="${D}" install
+	dodoc AUTHORS ChangeLog INSTALL NEWS README RESULT TODO
 	if use perl ; then
 		pushd perl || die
 		perl-module_src_install
@@ -82,7 +82,7 @@ src_install() {
 	fi
 	if use python ; then
 		pushd python || die
-		distutils_src_install
+		distutils-r1_src_install
 		popd || die
 	fi
 }

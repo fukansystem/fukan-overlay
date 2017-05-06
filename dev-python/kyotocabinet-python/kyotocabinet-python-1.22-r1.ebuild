@@ -1,13 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: $
+EAPI=6
 
-EAPI="3"
-PYTHON_DEPEND="3"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="2.*"
+PYTHON_COMPAT=( python3_{3,4} )
 
-inherit distutils eutils
+inherit distutils-r1 eutils
 
 DESCRIPTION="Python 3.x Binding of Kyoto Cabinet"
 HOMEPAGE="http://fallabs.com/kyotocabinet/pythondoc/"
