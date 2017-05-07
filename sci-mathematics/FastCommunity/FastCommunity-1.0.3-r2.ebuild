@@ -20,7 +20,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PF}-gcc.patch
+	epatch "${FILESDIR}"/${P}-gcc.patch
 	sed -i \
 		-e "s:-O3 -fomit-frame-pointer -funroll-loops -fforce-mem -fforce-addr -fexpensive-optimizations:${CFLAGS}:" \
 		-e "s:^LDFLAGS = :LDFLAGS = ${LDFLAGS}:" \
