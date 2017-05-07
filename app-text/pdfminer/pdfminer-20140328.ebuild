@@ -1,7 +1,3 @@
-# Copyright 1999-2014 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pdfminer/pdfminer-20140328.ebuild,v 1.1 2014/05/01 10:43:05 idella4 Exp $
-
 EAPI=5
 PYTHON_COMPAT=( python2_7 pypy )
 

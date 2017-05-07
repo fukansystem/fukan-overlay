@@ -1,8 +1,3 @@
-# Copyright 2015 Kiyohiro Yamaguchi (kiyoya) <kiyoya@gmail.com>
-# Copyright 2014 Shota Fukumori (sora_h) <her@sorah.jp>
-# Distributed under the terms of the MIT License
-# $Header: $
-
 EAPI=5
 
 MY_PN="mackerel-agent"
