@@ -34,10 +34,13 @@ src_unpack() {
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gcc4.3.3.patch
 
-	cd "${S}"/src
+	pushd "${S}"/src || die
 	sed -i \
 		-e "s:-Wall -O3 -ftemplate-depth-30:-Wall ${CFLAGS} -ftemplate-depth-50:" \
 		Makefile || die
+	popd || die
+
+	default
 }
 
 src_compile() {
