@@ -1,4 +1,4 @@
-EAPI=3
+EAPI="6"
 
 inherit toolchain-funcs
 
@@ -8,13 +8,13 @@ SRC_URI="http://redsvd.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 x86 amd64-linux x86-linux x64-macos x86-macos"
 IUSE=""
 
 DEPEND="dev-cpp/eigen:3"
 RDEPEND="${DEPEND}"
 
-REDSVD_TESTS="accuracy_test performance_test"
+REDSVD_TESTS=( accuracy_test performance_test )
 
 src_configure() {
 	tc-export CC CXX CPP AR RANLIB
@@ -29,8 +29,7 @@ src_compile() {
 
 src_test() {
 	cd "${S}/build/default/test" || die
-	for i in ${REDSVD_TESTS}
-	do
+	for i in ${REDSVD_TESTS}; do
 		einfo "Running test ${i}"
 		./${i} || die
 	done

@@ -1,9 +1,9 @@
-EAPI=4
+EAPI="6"
 
 inherit eutils
 
 DESCRIPTION="A simple and fast clustering tool"
-HOMEPAGE="http://code.google.com/p/bayon/"
+HOMEPAGE="https://github.com/fujimizu/bayon"
 GIT_COMMIT="7d429239563973f61e47538f1af31f9ace0cac88"
 SRC_URI="https://github.com/fujimizu/bayon/archive/${GIT_COMMIT}.zip"
 
@@ -16,16 +16,14 @@ DEPEND="sparsehash? ( dev-cpp/sparsehash )
 	test? ( dev-cpp/gtest )"
 RDEPEND="${DEPEND}"
 
+DOCS=( README TODO )
+
 src_unpack() {
-  unpack "${A}"
+	default
   mv bayon-"${GIT_COMMIT}" "${P}"
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-ldpath.patch || die
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc README TODO
+	epatch "${FILESDIR}"/${PN}-ldpath.patch
+	default
 }

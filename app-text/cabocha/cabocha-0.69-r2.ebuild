@@ -1,6 +1,6 @@
-EAPI="5"
+EAPI="6"
 
-PYTHON_COMPAT=( python2_{6,7} )
+PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 
 inherit autotools flag-o-matic eutils distutils-r1 perl-module
@@ -15,7 +15,6 @@ SRC_URI="https://github.com/taku910/cabocha/archive/${GIT_COMMIT}.zip"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86 amd64-linux x86-linux x64-macos x86-macos"
-
 IUSE="perl python unicode"
 
 RDEPEND="
@@ -35,6 +34,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
   eautoreconf
 	if use python; then
 		pushd python || die

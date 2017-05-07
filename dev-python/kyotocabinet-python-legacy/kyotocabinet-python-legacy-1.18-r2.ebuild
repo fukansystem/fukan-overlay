@@ -1,6 +1,6 @@
-EAPI=6
+EAPI="6"
 
-PYTHON_COMPAT=( python2_{6,7} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 eutils
 
@@ -15,5 +15,4 @@ IUSE=""
 
 RDEPEND=">=dev-db/kyotocabinet-1.2.63"
 DEPEND="${RDEPEND}
-	dev-python/setuptools"
-
+	dev-python/setuptools[${PYTHON_USEDEP}]"

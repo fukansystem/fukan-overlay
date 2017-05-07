@@ -1,10 +1,10 @@
-EAPI=3
+EAPI="6"
 
 inherit eutils
 
-DESCRIPTION="The fast modularity maximization algorithm"
+DESCRIPTION="The fast modularity maximization algorithm (weighted version)"
 HOMEPAGE="http://www.cs.unm.edu/~aaron/research/fastmodularity.htm"
-SRC_URI="http://www.cs.unm.edu/~aaron/research/${PN}_GPL_v${PV}.tgz"
+SRC_URI="http://www.cs.unm.edu/~aaron/research/${PN}_GPL_v${PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -14,23 +14,18 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack "${A}"
-	mv "${WORKDIR}"/${PN}_GPL_v${PV} "${S}"
-}
+S="${WORKDIR}"/${PN}_GPL_v${PV}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PF}-gcc.patch
+	epatch "${FILESDIR}"/${PN}-ignore_ext.patch
 	sed -i \
 		-e "s:-O3 -fomit-frame-pointer -funroll-loops -fforce-mem -fforce-addr -fexpensive-optimizations:${CFLAGS}:" \
 		-e "s:^LDFLAGS = :LDFLAGS = ${LDFLAGS}:" \
 		Makefile || die
-}
-
-src_compile() {
-	emake || die
+	default
 }
 
 src_install() {
-	dobin FastCommunityMH || die
+	dobin FastCommunity_wMH
 }

@@ -1,5 +1,6 @@
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3} )
+EAPI="6"
+
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit distutils-r1
 
@@ -18,7 +19,13 @@ DEPEND="${RDEPEND}
 	>=dev-python/django-1.7[${PYTHON_USEDEP}]
 	dev-python/pytest-runner[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? (
+		dev-python/django-environ[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-django[${PYTHON_USEDEP}]
+	)"
 
 python_test() {
 	esetup.py test

@@ -1,6 +1,3 @@
-app-text/hunpos ~amd64
-app-text/mecab ~amd64
-app-text/pdfminer ~amd64
 dev-db/kyotocabinet ~amd64
 dev-java/gson ~amd64
 dev-java/jama ~amd64

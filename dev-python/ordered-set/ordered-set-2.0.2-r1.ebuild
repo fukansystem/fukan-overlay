@@ -1,10 +1,11 @@
-EAPI=5
-PYTHON_COMPAT=( python{2_6,2_7,3_2,3_3} )
+EAPI="5"
+
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit distutils-r1
 
-DESCRIPTION="Tiny python code for parsing data from Microsoft's Office Open XML Spreadsheet format"
-HOMEPAGE="https://github.com/staale/py-xlsx"
+DESCRIPTION="A MutableSet that remembers its order, so that every entry has an index."
+HOMEPAGE="https://pypi.python.org/pypi/ordered-set/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -16,7 +17,10 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
+python_test() {
+	"${PYTHON}" tests.py
+}
+
 python_install_all() {
   distutils-r1_python_install_all
-  dodoc README.rst
 }

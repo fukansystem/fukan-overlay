@@ -1,4 +1,5 @@
-EAPI="3"
+EAPI="6"
+
 inherit autotools eutils
 
 MY_P="${P/crf/CRF}"
@@ -8,10 +9,12 @@ SRC_URI="http://crfpp.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="|| ( BSD LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
-IUSE="examples static-libs"
+KEYWORDS="amd64 x86 amd64-linux x86-linux x64-macos x86-macos"
+IUSE="doc examples static-libs"
 
 S="${WORKDIR}/${MY_P}"
+
+DOCS=( AUTHORS README )
 
 src_prepare() {
 	sed -i \
@@ -26,7 +29,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable static-libs static) || die
+	econf $(use_enable static-libs static)
 }
 
 src_test() {
@@ -39,17 +42,13 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	if ! use static-libs ; then
 		find "${ED}" -name "*.la" -type f -delete || die
 	fi
 
-	dodoc AUTHORS README || die
-	dohtml -r doc/* || die
-
-	if use examples ; then
-		insinto /usr/share/doc/${PF}
-		doins -r example || die
-	fi
+	use doc && local HTML_DOCS=( docs/. )
+	use examples && local EXAMPLES=( examples/. )
+	einstalldocs
 }

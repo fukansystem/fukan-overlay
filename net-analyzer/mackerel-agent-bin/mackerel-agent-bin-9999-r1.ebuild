@@ -1,4 +1,4 @@
-EAPI=5
+EAPI="6"
 
 MY_PN="mackerel-agent"
 MY_PV="latest"

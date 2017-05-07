@@ -1,4 +1,4 @@
-EAPI=4
+EAPI="6"
 
 DESCRIPTION="Fukan system"
 HOMEPAGE="http://academic-landscape.com/"
