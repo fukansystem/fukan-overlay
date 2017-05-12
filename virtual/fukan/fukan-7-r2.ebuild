@@ -28,7 +28,6 @@ RDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pymongo[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	net-libs/nodejs[npm]
 	>=sci-libs/scipy-0.11
 	sci-libs/scikits_learn
 	sci-mathematics/bayon
