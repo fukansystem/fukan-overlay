@@ -1,0 +1,38 @@
+--- fastcommunity_w_mh.cc.0	2018-03-08 07:52:54.292180900 +0000
++++ fastcommunity_w_mh.cc	2018-03-08 07:53:23.805349800 +0000
+@@ -82,7 +82,11 @@
+ #include "maxheap.h"
+ #include "vektor.h"
+ 
+-using namespace std;
++using std::cin;
++using std::ifstream;
++using std::ios;
++using std::ofstream;
++using std::string;
+ 
+ // ------------------------------------------------------------------------------------
+ // Edge object - defined by a pair of vertex indices and *edge pointer to next in linked-list
+--- maxheap.h.0	2018-03-08 07:52:05.866590100 +0000
++++ maxheap.h	2018-03-08 07:52:33.759647500 +0000
+@@ -42,7 +42,8 @@
+ 
+ #include <iostream>
+ 
+-using namespace std;
++using std::cout;
++using std::endl;
+ 
+ /*   Because using this heap requires us to be able to modify an arbitrary element's
+ 	data in constant O(1) time, I use to tricky tactic of having elements in an array-
+--- vektor.h.0	2018-03-08 07:55:34.046985900 +0000
++++ vektor.h	2018-03-08 07:55:43.917358200 +0000
+@@ -32,8 +32,6 @@
+ 
+ #include <iostream>
+ 
+-using namespace std;
+-
+ #if !defined(vektor_INCLUDED)
+ #define vektor_INCLUDED
+ #include "maxheap.h"
