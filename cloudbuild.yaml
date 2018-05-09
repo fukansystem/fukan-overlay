@@ -25,13 +25,13 @@ steps:
   - '-c'
   - |
     set -eu
-    mkdir -p /build/usr/local
-    rsync -a ./ /build/usr/local/fukan-overlay/
+    mkdir -p /usr/local
+    rsync -a ./ /usr/local/fukan-overlay/
     mkdir -p /etc/portage/repos.conf
     cat >> /etc/portage/repos.conf/fukan-overlay.conf <<EOM
     [fukan-overlay]
     auto-sync = no
-    location = /build/usr/local/fukan-overlay
+    location = /usr/local/fukan-overlay
     EOM
     cat >> /etc/portage/make.conf <<EOM
     MAKEOPTS="-j2"
@@ -52,30 +52,22 @@ steps:
     emerge --buildpkg --usepkg --buildpkg-exclude "virtual/*" \
       --root=./build --onlydeps --onlydeps-with-rdeps=n --with-bdeps=y \
       --quiet virtual/fukan
+    mkdir -p ./build/usr/portage
     rsync -a \
-      --exclude='/usr/portage/distfiles/' \
-      --exclude='/usr/portage/packages/' \
-      /usr/portage /build/usr/portage
-    mkdir -p /build/etc/portage/repos.conf
-    cat >> /build/etc/portage/repos.conf/fukan-overlay.conf <<EOM
-    [fukan-overlay]
-    auto-sync = no
-    location = /usr/local/fukan-overlay
-    EOM
-    cat >> /build/etc/portage/make.conf <<EOM
+      --exclude='portage/distfiles/' \
+      --exclude='portage/packages/' \
+      /usr/portage/ ./build/usr/portage/
+    mkdir -p ./build/usr/local
+    rsync -a /usr/local/fukan-overlay/ ./build/usr/local/fukan-overlay/
+    cp -P /etc/portage/make.profile ./build/etc/portage/make.profile
+    mkdir -p ./build/etc/portage/repos.conf
+    cp /etc/portage/repos.conf/fukan-overlay.conf ./build/etc/portage/repos.conf
+    cat >> ./build/etc/portage/make.conf <<EOM
     MAKEOPTS="-j2"
     EOM
   volumes:
   - name: 'packages'
     path: '/usr/portage/packages'
-
-- id: 'build'
-  name: 'gcr.io/cloud-builders/docker'
-  args:
-  - 'build'
-  - '--no-cache'
-  - '--tag=asia.gcr.io/${PROJECT_ID}/builder:latest'
-  - '.'
 
 - id: 'push.packages'
   name: 'gcr.io/cloud-builders/gsutil'
@@ -89,3 +81,13 @@ steps:
   volumes:
   - name: 'packages'
     path: '/usr/portage/packages'
+  waitFor: ['emerge']
+
+- id: 'build'
+  name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '--no-cache'
+  - '--tag=asia.gcr.io/${PROJECT_ID}/builder:latest'
+  - '.'
+  waitFor: ['emerge']
