@@ -25,6 +25,9 @@ steps:
   - '-c'
   - |
     set -eu
+    mkdir -p ./build
+    cp ./install_stage3.sh ./build
+    chmod +x ./build/install_stage3.sh
     mkdir -p /usr/local
     rsync -a ./ /usr/local/fukan-overlay/
     mkdir -p /etc/portage/repos.conf
@@ -39,18 +42,10 @@ steps:
     emerge-webrsync
     emerge --sync --quiet
     eselect profile set fukan-overlay:default/linux/amd64/no-multilib
-    emerge --buildpkg --usepkg --buildpkg-exclude "virtual/*" \
-      --onlydeps --onlydeps-with-rdeps=n --with-bdeps=y \
-      --quiet @system
-    emerge --buildpkg --usepkg --buildpkg-exclude "virtual/*" \
-      --onlydeps --onlydeps-with-rdeps=n --with-bdeps=y \
-      --quiet virtual/fukan
-    emerge --buildpkg --usepkg --buildpkg-exclude "virtual/*" \
-      --root=./build --root-deps=rdeps --quiet -1 sys-apps/baselayout
-    emerge --buildpkg --usepkg --buildpkg-exclude "virtual/*" \
-      --root=./build --root-deps=rdeps --quiet @system
-    emerge --buildpkg --usepkg --buildpkg-exclude "virtual/*" \
-      --root=./build --onlydeps --with-bdeps=y \
+    ./build/install_stage3.sh ./build
+    emerge --buildpkg --buildpkg-exclude "virtual/*" \
+      --usepkg --with-bdeps=y \
+      --root=./build --onlydeps --onlydeps-with-rdeps=n \
       --quiet virtual/fukan
     mkdir -p ./build/usr/portage
     rsync -a \
@@ -59,7 +54,8 @@ steps:
       /usr/portage/ ./build/usr/portage/
     mkdir -p ./build/usr/local
     rsync -a /usr/local/fukan-overlay/ ./build/usr/local/fukan-overlay/
-    cp -P /etc/portage/make.profile ./build/etc/portage/make.profile
+    cp -P --remove-destination \
+      /etc/portage/make.profile ./build/etc/portage/make.profile
     mkdir -p ./build/etc/portage/repos.conf
     cp /etc/portage/repos.conf/fukan-overlay.conf ./build/etc/portage/repos.conf
     cat >> ./build/etc/portage/make.conf <<EOM
