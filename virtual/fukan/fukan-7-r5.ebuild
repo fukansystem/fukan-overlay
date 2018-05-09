@@ -25,7 +25,6 @@ RDEPEND="
 	dev-python/kyotocabinet-python-legacy[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
-	dev-python/ordered-set[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pymongo[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
