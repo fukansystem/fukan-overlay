@@ -54,8 +54,7 @@ steps:
       /usr/portage/ ./build/usr/portage/
     mkdir -p ./build/usr/local
     rsync -a /usr/local/fukan-overlay/ ./build/usr/local/fukan-overlay/
-    cp -P --remove-destination \
-      /etc/portage/make.profile ./build/etc/portage/make.profile
+    cp -PT /etc/portage/make.profile ./build/etc/portage/make.profile
     mkdir -p ./build/etc/portage/repos.conf
     cp /etc/portage/repos.conf/fukan-overlay.conf ./build/etc/portage/repos.conf
     cat >> ./build/etc/portage/make.conf <<EOM
