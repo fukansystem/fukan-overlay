@@ -26,8 +26,6 @@ RDEPEND="
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/pymongo[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.11
 	sci-libs/scikits_learn
