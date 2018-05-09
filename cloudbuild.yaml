@@ -50,7 +50,7 @@ steps:
     emerge --buildpkg --usepkg --buildpkg-exclude "virtual/*" \
       --root=./build --root-deps=rdeps --quiet @system
     emerge --buildpkg --usepkg --buildpkg-exclude "virtual/*" \
-      --root=./build --onlydeps --onlydeps-with-rdeps=n --with-bdeps=y \
+      --root=./build --onlydeps --with-bdeps=y \
       --quiet virtual/fukan
     mkdir -p ./build/usr/portage
     rsync -a \
