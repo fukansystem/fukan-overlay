@@ -6,3 +6,4 @@ dev-python/nltk numpy
 dev-python/numpy lapack
 dev-python/pillow jpeg truetype
 dev-python/spyne xml
+www-servers/uwsgi python
