@@ -9,7 +9,7 @@ inherit distutils-r1 virtualx
 
 DESCRIPTION="Python tools to manipulate graphs and complex networks"
 HOMEPAGE="http://networkx.github.io/ https://github.com/networkx/networkx"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
@@ -43,13 +43,9 @@ RDEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)"
 
-PATCHES=(
-	"${FILESDIR}"/1.11-sphinx-pngmath.patch
-)
-
 python_prepare_all() {
 	# Avoid d'loading of file objects.inv from 2 sites of python docs
-	sed -e "s/'sphinx.ext.intersphinx', //" -i doc/source/conf.py || die
+	sed -e "s/'sphinx.ext.intersphinx', //" -i doc/conf.py || die
 	distutils-r1_python_prepare_all
 }
 
