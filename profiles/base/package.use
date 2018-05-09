@@ -1,5 +1,6 @@
 app-text/cabocha python
 app-text/pdfminer cjk
+dev-lang/python sqlite
 dev-python/nltk numpy
 dev-python/numpy lapack
 dev-python/pillow jpeg truetype
