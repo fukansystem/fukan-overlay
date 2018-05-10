@@ -12,7 +12,7 @@ SRC_URI=""
 LICENSE=""
 SLOT="4"
 KEYWORDS="amd64 x86 amd64-linux x86-linux x64-macos x86-macos"
-IUSE="crawler doc experimental +fastcgi +postgres +unittest"
+IUSE="crawler doc experimental +fastcgi +postgres +unittest +wsgi"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -25,10 +25,7 @@ RDEPEND="
 	dev-python/kyotocabinet-python-legacy[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
-	dev-python/ordered-set[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/pymongo[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.11
 	sci-libs/scikits_learn
@@ -53,7 +50,9 @@ RDEPEND="
 	postgres? (
 		dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	unittest? (
-		dev-python/pycodestyle[${PYTHON_USEDEP}] )"
+		dev-python/pycodestyle[${PYTHON_USEDEP}] )
+	wsgi? (
+		www-servers/uwsgi[python,${PYTHON_USEDEP}] )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 NLTK_CORPUS=( maxent_treebank_pos_tagger punkt stopwords wordnet )

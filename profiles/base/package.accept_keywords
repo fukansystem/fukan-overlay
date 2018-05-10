@@ -1,0 +1,22 @@
+# celery
+dev-python/billiard ~amd64
+dev-python/celery ~amd64
+
+# msgpack
+dev-python/msgpack ~amd64
+
+# networkx
+dev-python/networkx ~amd64
+
+# nltk
+dev-python/nltk ~amd64
+
+# numpy
+dev-python/numpy ~amd64
+
+# scikits-learn
+sci-libs/scikits ~amd64
+sci-libs/scikits_learn ~amd64
+
+# scipy
+sci-libs/scipy ~amd64

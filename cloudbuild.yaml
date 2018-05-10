@@ -1,0 +1,87 @@
+# In this directory, run the following command to build this builder.
+# $ gcloud container builds submit . --config=cloudbuild.yaml
+
+images:
+- 'asia.gcr.io/${PROJECT_ID}/builder:latest'
+timeout: '21600s'
+steps:
+- id: 'pull.packages'
+  name: 'gcr.io/cloud-builders/gsutil'
+  args:
+  - '-m'
+  - 'rsync'
+  - '-d'
+  - '-r'
+  - 'gs://${PROJECT_ID}-portage/packages'
+  - '/usr/portage/packages'
+  volumes:
+  - name: 'packages'
+    path: '/usr/portage/packages'
+
+- id: 'emerge'
+  name: 'gentoo/stage3-amd64-nomultilib'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    set -eu
+    mkdir -p ./build
+    cp ./install_stage3.sh ./build
+    chmod +x ./build/install_stage3.sh
+    mkdir -p /usr/local
+    rsync -a ./ /usr/local/fukan-overlay/
+    mkdir -p /etc/portage/repos.conf
+    cat >> /etc/portage/repos.conf/fukan-overlay.conf <<EOM
+    [fukan-overlay]
+    auto-sync = no
+    location = /usr/local/fukan-overlay
+    EOM
+    cat >> /etc/portage/make.conf <<EOM
+    MAKEOPTS="-j2"
+    EOM
+    emerge-webrsync
+    emerge --sync --quiet
+    eselect profile set fukan-overlay:default/linux/amd64/no-multilib
+    ./build/install_stage3.sh ./build
+    emerge --buildpkg --buildpkg-exclude "virtual/*" \
+      --usepkg --with-bdeps=y --root=./build --onlydeps \
+      --quiet virtual/fukan
+    mkdir -p ./build/usr/portage
+    rsync -a \
+      --exclude='portage/distfiles/' \
+      --exclude='portage/packages/' \
+      /usr/portage/ ./build/usr/portage/
+    mkdir -p ./build/usr/local
+    rsync -a /usr/local/fukan-overlay/ ./build/usr/local/fukan-overlay/
+    cp -PT /etc/portage/make.profile ./build/etc/portage/make.profile
+    mkdir -p ./build/etc/portage/repos.conf
+    cp /etc/portage/repos.conf/fukan-overlay.conf ./build/etc/portage/repos.conf
+    cat >> ./build/etc/portage/make.conf <<EOM
+    MAKEOPTS="-j2"
+    EOM
+  volumes:
+  - name: 'packages'
+    path: '/usr/portage/packages'
+
+- id: 'push.packages'
+  name: 'gcr.io/cloud-builders/gsutil'
+  args:
+  - '-m'
+  - 'rsync'
+  - '-d'
+  - '-r'
+  - '/usr/portage/packages'
+  - 'gs://${PROJECT_ID}-portage/packages'
+  volumes:
+  - name: 'packages'
+    path: '/usr/portage/packages'
+  waitFor: ['emerge']
+
+- id: 'build'
+  name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '--no-cache'
+  - '--tag=asia.gcr.io/${PROJECT_ID}/builder:latest'
+  - '.'
+  waitFor: ['emerge']
