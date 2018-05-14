@@ -44,15 +44,12 @@ steps:
     eselect profile set fukan-overlay:default/linux/amd64/no-multilib
     ./build/install_stage3.sh ./build
     emerge --buildpkg --buildpkg-exclude "virtual/*" \
-      --usepkg --update -1 \
-      dev-libs/openssl net-misc/openssh
-    emerge --buildpkg --buildpkg-exclude "virtual/*" \
       --usepkg --with-bdeps=y --root=./build --onlydeps \
       --quiet virtual/fukan
     mkdir -p ./build/usr/portage
     rsync -a \
-      --exclude='portage/distfiles/' \
-      --exclude='portage/packages/' \
+      --exclude='/distfiles' \
+      --exclude='/packages' \
       /usr/portage/ ./build/usr/portage/
     mkdir -p ./build/usr/local
     rsync -a /usr/local/fukan-overlay/ ./build/usr/local/fukan-overlay/

@@ -12,7 +12,7 @@ SRC_URI=""
 LICENSE=""
 SLOT="4"
 KEYWORDS="amd64 x86 amd64-linux x86-linux x64-macos x86-macos"
-IUSE="crawler doc experimental +fastcgi +flower +postgres +unittest +wsgi"
+IUSE="crawler doc experimental +fastcgi +postgres +unittest +wsgi"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -47,8 +47,6 @@ RDEPEND="
 		dev-python/py-xlsx[${PYTHON_USEDEP}] )
 	fastcgi? (
 		dev-python/flup[${PYTHON_USEDEP}] )
-	flower? (
-		dev-python/flower[${PYTHON_USEDEP}] )
 	postgres? (
 		dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	unittest? (
