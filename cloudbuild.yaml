@@ -43,8 +43,9 @@ steps:
     emerge --sync --quiet
     eselect profile set fukan-overlay:default/linux/amd64/no-multilib
     ./build/install_stage3.sh ./build
-    emerge --buildpkg \
-      --buildpkg-exclude "dev-libs/openssl net-misc/openssh virtual/*" \
+    emerge --buildpkg --buildpkgonly --usepkg \
+      dev-libs/openssl net-misc/openssh
+    emerge --buildpkg --buildpkg-exclude "virtual/*" \
       --usepkg --with-bdeps=y --root=./build --onlydeps \
       --quiet virtual/fukan
     mkdir -p ./build/usr/portage
