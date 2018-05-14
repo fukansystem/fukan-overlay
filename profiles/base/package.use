@@ -6,3 +6,6 @@ dev-python/numpy lapack
 dev-python/pillow jpeg truetype
 dev-python/spyne xml
 www-servers/uwsgi python
+
+dev-libs/openssl -bindist
+net-misc/openssh -bindist
