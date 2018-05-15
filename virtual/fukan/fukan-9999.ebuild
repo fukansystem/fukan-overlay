@@ -49,7 +49,7 @@ RDEPEND="
 		dev-python/flup[${PYTHON_USEDEP}] )
 	postgres? (
 		dev-python/psycopg:2[${PYTHON_USEDEP}] )
-	rest (
+	rest? (
 		dev-python/django-rest-framework[${PYTHON_USEDEP}] )
 	unittest? (
 		dev-python/pycodestyle[${PYTHON_USEDEP}] )
