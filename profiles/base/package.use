@@ -4,5 +4,5 @@ dev-lang/python sqlite
 dev-python/nltk numpy
 dev-python/numpy lapack
 dev-python/pillow jpeg truetype
-dev-python/spyne xml
+virtual/fukan fastcgi postgres rest unittest wsgi
 www-servers/uwsgi python

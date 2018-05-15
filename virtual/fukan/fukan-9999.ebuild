@@ -12,7 +12,7 @@ SRC_URI=""
 LICENSE=""
 SLOT="4"
 KEYWORDS="amd64 x86 amd64-linux x86-linux x64-macos x86-macos"
-IUSE="crawler doc experimental +fastcgi +postgres +unittest +wsgi"
+IUSE="crawler doc experimental fastcgi postgres rest unittest wsgi"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -49,6 +49,8 @@ RDEPEND="
 		dev-python/flup[${PYTHON_USEDEP}] )
 	postgres? (
 		dev-python/psycopg:2[${PYTHON_USEDEP}] )
+	rest (
+		dev-python/django-rest-framework[${PYTHON_USEDEP}] )
 	unittest? (
 		dev-python/pycodestyle[${PYTHON_USEDEP}] )
 	wsgi? (
