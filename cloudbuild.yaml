@@ -2,7 +2,7 @@
 # $ gcloud container builds submit . --config=cloudbuild.yaml
 
 images:
-- 'asia.gcr.io/${PROJECT_ID}/builder:latest'
+- 'asia.gcr.io/${PROJECT_ID}/runtime:latest'
 timeout: '21600s'
 steps:
 - id: 'pull.packages'
@@ -42,23 +42,13 @@ steps:
     emerge-webrsync
     emerge --sync --quiet
     eselect profile set fukan-overlay:default/linux/amd64/no-multilib
+    emerge --buildpkg --buildpkg-exclude "virtual/*" \
+      --usepkg --with-bdeps=y --onlydeps \
+      --quiet virtual/fukan
     ./build/install_stage3.sh ./build
     emerge --buildpkg --buildpkg-exclude "virtual/*" \
-      --usepkg --with-bdeps=y --root=./build --onlydeps \
+      --usepkg --root=./build --root-deps=rdeps \
       --quiet virtual/fukan
-    mkdir -p ./build/usr/portage
-    rsync -a \
-      --exclude='/distfiles' \
-      --exclude='/packages' \
-      /usr/portage/ ./build/usr/portage/
-    mkdir -p ./build/usr/local
-    rsync -a /usr/local/fukan-overlay/ ./build/usr/local/fukan-overlay/
-    cp -PT /etc/portage/make.profile ./build/etc/portage/make.profile
-    mkdir -p ./build/etc/portage/repos.conf
-    cp /etc/portage/repos.conf/fukan-overlay.conf ./build/etc/portage/repos.conf
-    cat >> ./build/etc/portage/make.conf <<EOM
-    MAKEOPTS="-j2"
-    EOM
   volumes:
   - name: 'packages'
     path: '/usr/portage/packages'
@@ -82,6 +72,6 @@ steps:
   args:
   - 'build'
   - '--no-cache'
-  - '--tag=asia.gcr.io/${PROJECT_ID}/builder:latest'
+  - '--tag=asia.gcr.io/${PROJECT_ID}/runtime:latest'
   - '.'
   waitFor: ['emerge']
