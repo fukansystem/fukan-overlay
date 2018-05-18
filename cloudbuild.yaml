@@ -25,9 +25,6 @@ steps:
   - '-c'
   - |
     set -eu
-    mkdir -p ./build
-    cp ./install_stage3.sh ./build
-    chmod +x ./build/install_stage3.sh
     mkdir -p /usr/local
     rsync -a ./ /usr/local/fukan-overlay/
     mkdir -p /etc/portage/repos.conf
@@ -45,7 +42,9 @@ steps:
     emerge --buildpkg --buildpkg-exclude "virtual/*" \
       --usepkg --with-bdeps=y --onlydeps \
       --quiet virtual/fukan
-    ./build/install_stage3.sh ./build
+    mkdir -p ./build
+    chmod +x ./install_stage3.sh
+    ./install_stage3.sh ./build
     emerge --buildpkg --buildpkg-exclude "virtual/*" \
       --usepkg --root=./build --root-deps=rdeps \
       --quiet virtual/fukan
