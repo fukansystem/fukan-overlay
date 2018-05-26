@@ -1,10 +1,8 @@
 app-text/cabocha python
 app-text/pdfminer cjk
 dev-lang/python sqlite
-dev-python/nltk numpy
 dev-python/numpy lapack
-dev-python/pillow jpeg truetype
-virtual/fukan postgres rest unittest wsgi
+virtual/fukan postgres wsgi
 www-servers/uwsgi python
 
 dev-libs/openssl -bindist
