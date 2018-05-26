@@ -39,15 +39,18 @@ steps:
     emerge-webrsync
     emerge --sync --quiet
     eselect profile set fukan-overlay:default/linux/amd64/no-multilib
+    PACKAGES="
+      dev-python/pip
+      virtual/fukan"
     emerge --buildpkg --buildpkg-exclude "virtual/*" \
-      --usepkg --with-bdeps=y --onlydeps \
-      --quiet virtual/fukan
+      --usepkg --with-bdeps=y --onlydeps --quiet $${PACKAGES}
     mkdir -p ./build
     chmod +x ./install_stage3.sh
     ./install_stage3.sh ./build
+    emerge --root=./build --root-deps=rdeps --quiet --oneshot \
+      dev-libs/openssl net-misc/openssh  # NOTE: https://bugs.gentoo.org/531540
     emerge --buildpkg --buildpkg-exclude "virtual/*" \
-      --usepkg --root=./build --root-deps=rdeps \
-      --quiet virtual/fukan
+      --usepkg --root=./build --root-deps=rdeps --quiet $${PACKAGES}
   volumes:
   - name: 'packages'
     path: '/usr/portage/packages'
