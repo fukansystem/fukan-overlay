@@ -1,5 +1,3 @@
-app-text/cabocha python
-app-text/pdfminer cjk
 dev-lang/python sqlite
 dev-python/numpy lapack
 virtual/fukan postgres wsgi
