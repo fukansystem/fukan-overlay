@@ -2,12 +2,7 @@ app-text/cabocha python
 app-text/pdfminer cjk
 dev-lang/python sqlite
 dev-python/numpy lapack
-<<<<<<< Updated upstream
 virtual/fukan postgres wsgi
-=======
-dev-python/pillow jpeg truetype
-virtual/fukan fastcgi postgres rest unittest wsgi
->>>>>>> Stashed changes
 www-servers/uwsgi python
 
 dev-libs/openssl -bindist
