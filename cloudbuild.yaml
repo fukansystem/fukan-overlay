@@ -39,7 +39,6 @@ steps:
     emerge-webrsync
     emerge --sync --quiet
     eselect profile set fukan-overlay:default/linux/amd64/no-multilib
-<<<<<<< Updated upstream
     PACKAGES="
       dev-python/pip
       virtual/fukan"
@@ -53,15 +52,6 @@ steps:
     emerge --newuse --buildpkg --buildpkg-exclude "virtual/*" \
       --usepkg --root=./build --root-deps=rdeps --newuse --deep \
       --quiet $${PACKAGES}
-=======
-    emerge --buildpkg --usepkg --with-bdeps=y --onlydeps --quiet \
-      virtual/fukan
-    mkdir -p ./build
-    chmod +x ./install_stage3.sh
-    ./install_stage3.sh ./build
-    emerge --root=./build --root-deps=rdeps --usepkgonly --quiet \
-      virtual/fukan
->>>>>>> Stashed changes
   volumes:
   - name: 'packages'
     path: '/usr/portage/packages'
