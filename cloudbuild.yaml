@@ -42,16 +42,14 @@ steps:
     PACKAGES="
       dev-python/pip
       virtual/fukan"
-    emerge --buildpkg --buildpkg-exclude "virtual/*" \
-      --usepkg --with-bdeps=y --onlydeps --newuse --deep --quiet $${PACKAGES}
+    emerge --buildpkg --usepkg --with-bdeps=y --onlydeps --newuse --deep \
+      --rebuild-if-new-ver --quiet $${PACKAGES}
     mkdir -p ./build
     chmod +x ./install_stage3.sh
     ./install_stage3.sh ./build
     emerge --root=./build --root-deps=rdeps --quiet --oneshot \
       dev-libs/openssl net-misc/openssh  # NOTE: https://bugs.gentoo.org/531540
-    emerge --newuse --buildpkg --buildpkg-exclude "virtual/*" \
-      --usepkg --root=./build --root-deps=rdeps --newuse --deep \
-      --quiet $${PACKAGES}
+    emerge --root=./build --root-deps=rdeps --usepkg --quiet $${PACKAGES}
   volumes:
   - name: 'packages'
     path: '/usr/portage/packages'
