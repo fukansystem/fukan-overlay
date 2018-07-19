@@ -49,7 +49,8 @@ steps:
     ./install_stage3.sh ./build
     emerge --root=./build --root-deps=rdeps --quiet --oneshot \
       dev-libs/openssl net-misc/openssh  # NOTE: https://bugs.gentoo.org/531540
-    emerge --root=./build --root-deps=rdeps --usepkg --quiet $${PACKAGES}
+    emerge --buildpkg --usepkg --newuse --deep --rebuild-if-new-ver \
+      --root=./build --root-deps=rdeps --quiet $${PACKAGES}
   volumes:
   - name: 'packages'
     path: '/usr/portage/packages'
