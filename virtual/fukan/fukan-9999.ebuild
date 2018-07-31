@@ -17,8 +17,8 @@ IUSE="postgres wsgi"
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="
 	${DEPEND}
-	dev-libs/boost[python,${PYTHON_USEDEP}]
 	dev-python/kyotocabinet-python-legacy[${PYTHON_USEDEP}]
+	dev-python/vowpalwabbit
 	>=sci-libs/scipy-0.11
 	sci-libs/scikits_learn
 	sci-mathematics/bayon

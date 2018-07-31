@@ -1,0 +1,15 @@
+--- python/setup.py.0	2018-07-31 16:51:27.116507600 +0900
++++ python/setup.py	2018-07-31 16:56:08.039797400 +0900
+@@ -36,10 +36,8 @@
+         environ['DYLD_LIBRARY_PATH'] = sysconfig.get_config_var('LIBDIR')
+         options = ['']
+     elif system == 'Linux':
+-        options = ['-py{v[0]}{v[1]}'.format(v=version_info),
+-                   '-py{v[0]}'.format(v=version_info),
+-                   '{v[0]}'.format(v=version_info),
+-                   '']
++        options = ['-{v[0]}.{v[1]}-mt'.format(v=version_info),
++                   '-{v[0]}.{v[1]}'.format(v=version_info)]
+     elif system == 'Darwin':
+         options = ['{v[0]}{v[1]}-mt'.format(v=version_info),
+                    '{v[0]}-mt'.format(v=version_info),
