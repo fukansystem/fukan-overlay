@@ -21,7 +21,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	default_src_prepare
+	default
 	epatch "${FILESDIR}"/${PN}-python-setup.patch
 	pushd python || die
 	distutils-r1_src_prepare
@@ -29,8 +29,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# eautoreconf
-	default_src_configure
+	default
 	pushd python || die
 	distutils-r1_src_configure
 	popd || die
