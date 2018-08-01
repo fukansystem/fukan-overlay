@@ -7,8 +7,9 @@ the fukan system.
 ## Testing new changes locally
 
 ```shell
+# or use asia.gcr.io/fukansystem3/runtime image.
 docker run -it --rm \
-  -v $(pwd):/usr/local/fukan-overlay:ro \
+  -v $(pwd):/usr/local/fukan-overlay \
   gentoo/stage3-amd64-nomultilib /bin/bash
 
 mkdir -p /etc/portage/repos.conf
@@ -20,6 +21,9 @@ EOM
 
 # or fukan-overlay:default/linux/amd64 on multilib systems.
 eselect profile set fukan-overlay:default/linux/amd64/no-multilib
+
+# or emerge --sync
+emerge-webrsync
 
 emerge -pv --root=/build --root-deps=rdeps virtual/fukan
 ```
