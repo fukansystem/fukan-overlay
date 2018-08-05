@@ -1,20 +1,18 @@
-EAPI="6"
+EAPI=6
 
 inherit eutils
 
 DESCRIPTION="The fast modularity maximization algorithm (weighted version)"
 HOMEPAGE="http://www.cs.unm.edu/~aaron/research/fastmodularity.htm"
-SRC_URI="http://www.cs.unm.edu/~aaron/research/${PN}_GPL_v${PV}.zip"
+SRC_URI="http://www.cs.unm.edu/~aaron/research/${PN}_GPL_v${PV}.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 amd64-linux x86-linux x64-macos x86-macos"
-IUSE=""
 
+IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}"/${PN}_GPL_v${PV}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gcc.patch

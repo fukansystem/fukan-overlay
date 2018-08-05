@@ -1,7 +1,7 @@
-EAPI="6"
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
@@ -18,6 +18,7 @@ DEPEND="${PYTHON_DEPS}"
 RDEPEND="
 	${DEPEND}
 	dev-python/kyotocabinet-python-legacy[${PYTHON_USEDEP}]
+	dev-python/vowpalwabbit[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.11
 	sci-libs/scikits_learn
 	sci-mathematics/bayon

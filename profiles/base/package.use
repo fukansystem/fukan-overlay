@@ -1,7 +1,11 @@
 dev-lang/python sqlite
+dev-libs/boost python
 dev-python/numpy lapack
 virtual/fukan postgres wsgi
 www-servers/uwsgi python
 
 dev-libs/openssl -bindist
 net-misc/openssh -bindist
+
+# https://bugs.gentoo.org/661308
+dev-python/pillow jpeg
