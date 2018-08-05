@@ -38,6 +38,9 @@ steps:
     EOM
     emerge-webrsync
     emerge --sync --quiet
+    mkdir -p /usr/portage/distfiles
+    chown root:portage /usr/portage/distfiles
+    chmod 775 /usr/portage/distfiles
     eselect profile set fukan-overlay:default/linux/amd64/no-multilib
     PACKAGES="
       dev-python/pip
