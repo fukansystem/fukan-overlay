@@ -7,3 +7,9 @@ sci-libs/scikits_learn ~amd64
 
 # scipy
 sci-libs/scipy ~amd64
+
+# igraph
+dev-libs/igraph ~amd64
+
+# graph-tool
+dev-python/graph-tool ~amd64

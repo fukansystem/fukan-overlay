@@ -9,3 +9,6 @@ net-misc/openssh -bindist
 
 # https://bugs.gentoo.org/661308
 dev-python/pillow jpeg
+
+dev-python/graph-tool -cairo openmp
+dev-libs/boost context
