@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 		dev-java/jama
 		>=virtual/jdk-1.4 )"
 
+S="${WORKDIR}"/"${MY_PN}"-"${PV}"
+
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gcc4.3.3.patch
 
