@@ -1,5 +1,5 @@
 # In this directory, run the following command to build this builder.
-# $ gcloud container builds submit . --config=cloudbuild.yaml
+# $ gcloud builds submit . --config=cloudbuild.yaml
 
 images:
 - 'asia.gcr.io/${PROJECT_ID}/runtime:latest'
@@ -46,7 +46,7 @@ steps:
       dev-python/pip
       virtual/fukan"
     emerge --buildpkg --usepkg --with-bdeps=y --onlydeps --newuse --deep \
-      --rebuild-if-new-ver --quiet $${PACKAGES}
+      --rebuild-if-new-ver --quiet --autounmask-backtrack=y $${PACKAGES}
     mkdir -p ./build
     chmod +x ./install_stage3.sh
     ./install_stage3.sh ./build
