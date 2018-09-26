@@ -54,6 +54,8 @@ steps:
       dev-libs/openssl net-misc/openssh  # NOTE: https://bugs.gentoo.org/531540
     emerge --buildpkg --usepkg --newuse --deep --rebuild-if-new-ver \
       --root=./build --root-deps=rdeps --quiet $${PACKAGES}
+    emerge --buildpkg --usepkg --quiet app-portage/gentoolkit
+    eclean -dq -t 3w packages
   volumes:
   - name: 'packages'
     path: '/usr/portage/packages'
