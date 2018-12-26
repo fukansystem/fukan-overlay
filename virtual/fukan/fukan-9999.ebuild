@@ -18,10 +18,10 @@ DEPEND="${PYTHON_DEPS}"
 RDEPEND="
 	${DEPEND}
 	dev-libs/igraph
-	dev-python/kyotocabinet-python[$(python_gen_usedep 'python3*')]
+	dev-python/kyotocabinet-python[${PYTHON_USEDEP}]
 	dev-python/vowpalwabbit[${PYTHON_USEDEP}]
-	>=sci-libs/scipy-0.11
-	sci-libs/scikits_learn
+	>=sci-libs/scipy-0.11[${PYTHON_USEDEP}]
+	sci-libs/scikits_learn[${PYTHON_USEDEP}]
 	sci-mathematics/bayon
 	sci-mathematics/FastCommunity
 	sci-mathematics/FastCommunity_w

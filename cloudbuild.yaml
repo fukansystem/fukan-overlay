@@ -35,6 +35,7 @@ steps:
     EOM
     cat >> /etc/portage/make.conf <<EOM
     MAKEOPTS="-j2"
+    PYTHON_TARGETS="python3_6"
     EOM
     emerge-webrsync
     emerge --sync --quiet

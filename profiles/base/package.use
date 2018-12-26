@@ -12,3 +12,7 @@ dev-python/pillow jpeg
 
 dev-python/graph-tool -cairo openmp
 dev-libs/boost context
+
+# Try to avoid installing Python 2.
+# See https://bugs.gentoo.org/329479
+dev-vcs/git -python
