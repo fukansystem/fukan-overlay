@@ -1,7 +1,7 @@
 EAPI=6
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python{3_6} )
 
 inherit distutils-r1
 
@@ -19,7 +19,6 @@ RDEPEND="
 	${DEPEND}
 	dev-libs/igraph
 	dev-python/kyotocabinet-python[$(python_gen_usedep 'python3*')]
-	dev-python/kyotocabinet-python-legacy[$(python_gen_usedep 'python2*')]
 	dev-python/vowpalwabbit[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.11
 	sci-libs/scikits_learn
