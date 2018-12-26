@@ -1,9 +1,15 @@
 # In this directory, run the following command to build this builder.
 # $ gcloud builds submit . --config=cloudbuild.yaml
 
+substitutions:
+  _PORTAGE_DATE: '20181225'
+
 images:
 - 'asia.gcr.io/${PROJECT_ID}/runtime:latest'
-timeout: '21600s'
+- 'asia.gcr.io/${PROJECT_ID}/runtime:${_PORTAGE_DATE}'
+
+timeout: '21600s'  # 6 hours
+
 steps:
 - id: 'pull.packages'
   name: 'gcr.io/cloud-builders/gsutil'
@@ -34,11 +40,11 @@ steps:
     location = /usr/local/fukan-overlay
     EOM
     cat >> /etc/portage/make.conf <<EOM
+    FEATURES="userfetch"
     MAKEOPTS="-j2"
     PYTHON_TARGETS="python3_6"
     EOM
-    emerge-webrsync
-    emerge --sync --quiet
+    emerge-webrsync --revert=${_PORTAGE_DATE}
     mkdir -p /usr/portage/distfiles
     chown root:portage /usr/portage/distfiles
     chmod 775 /usr/portage/distfiles
@@ -80,6 +86,14 @@ steps:
   args:
   - 'build'
   - '--no-cache'
-  - '--tag=asia.gcr.io/${PROJECT_ID}/runtime:latest'
+  - '--tag=asia.gcr.io/${PROJECT_ID}/runtime:${_PORTAGE_DATE}'
   - '.'
   waitFor: ['emerge']
+
+- id: 'tag'
+  name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'tag'
+  - 'asia.gcr.io/${PROJECT_ID}/runtime:${_PORTAGE_DATE}'
+  - 'asia.gcr.io/${PROJECT_ID}/runtime:latest'
+  waitFor: ['build']
