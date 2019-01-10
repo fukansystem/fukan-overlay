@@ -16,3 +16,6 @@ dev-libs/boost context
 # Try to avoid installing Python 2.
 # See https://bugs.gentoo.org/329479
 dev-vcs/git -python
+
+app-dicts/mecab-ipadic unicode
+app-text/mecab unicode

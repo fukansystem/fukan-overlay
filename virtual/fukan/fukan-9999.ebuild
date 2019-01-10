@@ -17,6 +17,8 @@ IUSE="postgres wsgi"
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="
 	${DEPEND}
+	app-dicts/mecab-ipadic
+	app-text/mecab
 	dev-libs/igraph
 	dev-python/kyotocabinet-python[${PYTHON_USEDEP}]
 	dev-python/vowpalwabbit[${PYTHON_USEDEP}]
