@@ -19,6 +19,7 @@ RDEPEND="
 	${DEPEND}
 	app-dicts/mecab-ipadic
 	app-text/mecab
+	dev-lang/swig
 	dev-libs/igraph
 	dev-python/kyotocabinet-python[${PYTHON_USEDEP}]
 	dev-python/vowpalwabbit[${PYTHON_USEDEP}]
