@@ -17,7 +17,7 @@ IUSE="postgres wsgi"
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="
 	${DEPEND}
-	app-dicts/mecab-ipadic
+	app-dicts/mecab-ipadic-neologd
 	app-text/mecab
 	dev-lang/swig
 	dev-libs/igraph
