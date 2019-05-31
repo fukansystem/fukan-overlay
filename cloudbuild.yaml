@@ -2,7 +2,7 @@
 # $ gcloud builds submit . --config=cloudbuild.yaml
 
 substitutions:
-  _PORTAGE_DATE: '20190319'
+  _PORTAGE_DATE: '20190529'
 
 images:
 - 'asia.gcr.io/${PROJECT_ID}/runtime:latest'
