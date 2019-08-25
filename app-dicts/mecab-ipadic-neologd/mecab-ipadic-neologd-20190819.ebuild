@@ -5,8 +5,9 @@ inherit git-r3
 DESCRIPTION="Neologism dictionary based on the language resources on the Web"
 HOMEPAGE="https://github.com/neologd/mecab-ipadic-neologd"
 EGIT_REPO_URI="https://github.com/neologd/mecab-ipadic-neologd.git"
-EGIT_COMMIT="0700f47e9801c1b7c5b49754d8721c9014a75f6f"
+EGIT_COMMIT="5dfc684d2e1515fcdf7a1d39ceb3b50bd417d0d9"
 
+# https://sourceforge.net/projects/mecab/files/mecab-ipadic/
 MECAB_IPADIC="2.7.0-20070801"
 SRC_URI="mirror://sourceforge/mecab/mecab-ipadic-${MECAB_IPADIC}.tar.gz"
 
