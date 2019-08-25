@@ -14,6 +14,8 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}"/${PN}_GPL_v${PV}
+
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gcc.patch
 	epatch "${FILESDIR}"/${P}-tuple.patch
