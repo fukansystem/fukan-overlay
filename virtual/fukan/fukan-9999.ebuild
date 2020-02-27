@@ -22,7 +22,6 @@ RDEPEND="
 	dev-lang/swig
 	dev-libs/igraph
 	dev-python/kyotocabinet-python[${PYTHON_USEDEP}]
-	dev-python/vowpalwabbit[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.11[${PYTHON_USEDEP}]
 	sci-libs/scikits_learn[${PYTHON_USEDEP}]
 	sci-mathematics/bayon
