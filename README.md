@@ -11,7 +11,12 @@ the fukan system.
 docker run -it --rm \
   -v $(pwd):/usr/local/fukan-overlay \
   gentoo/stage3-amd64-nomultilib /bin/bash
+```
 
+Once a shell opened, run the following commands to verify local changes.
+
+```shell
+# Configure portage to use the local overlay.
 mkdir -p /etc/portage/repos.conf
 cat >> /etc/portage/repos.conf/fukan-overlay.conf <<EOM
 [fukan-overlay]
@@ -25,5 +30,9 @@ eselect profile set fukan-overlay:default/linux/amd64/no-multilib
 # or emerge --sync
 emerge-webrsync
 
-emerge -pv --root=/build --root-deps=rdeps virtual/fukan
+# Verify build-time dependencies.
+emerge --buildpkg --quiet --with-bdeps=y --onlydeps virtual/fukan
+
+# Verify runtime dependencies.
+emerge --usepkg --quiet --root=/build --root-deps=rdeps virtual/fukan
 ```
