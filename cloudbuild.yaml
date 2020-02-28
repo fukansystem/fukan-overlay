@@ -52,16 +52,25 @@ steps:
     PACKAGES="
       dev-python/pip
       virtual/fukan"
-    emerge --buildpkg --usepkg --with-bdeps=y --onlydeps --newuse --deep \
-      --rebuild-if-new-ver --quiet --autounmask-backtrack=y $${PACKAGES}
+    emerge --quiet \
+      --buildpkg --usepkg --rebuild-if-new-ver \
+      --with-bdeps=y --onlydeps --newuse --deep \
+      --autounmask=y --autounmask-continue=y \
+      $${PACKAGES}
     mkdir -p ./build
     chmod +x ./install_stage3.sh
     ./install_stage3.sh ./build
-    emerge --root=./build --root-deps=rdeps --quiet --oneshot \
+    emerge --root=./build --quiet \
+      --root-deps=rdeps --oneshot \
       dev-libs/openssl net-misc/openssh  # NOTE: https://bugs.gentoo.org/531540
-    emerge --buildpkg --usepkg --newuse --deep --rebuild-if-new-ver \
-      --root=./build --root-deps=rdeps --quiet $${PACKAGES}
-    emerge --buildpkg --usepkg --quiet app-portage/gentoolkit
+    emerge --root=./build --quiet \
+      --buildpkg --usepkg --rebuild-if-new-ver \
+      --root-deps=rdeps --newuse --deep \
+      --autounmask=y --autounmask-continue=y \
+      $${PACKAGES}
+    emerge --quiet \
+      --buildpkg --usepkg \
+      app-portage/gentoolkit
     eclean -dq -t 3w packages
   volumes:
   - name: 'packages'
