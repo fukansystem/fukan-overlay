@@ -22,6 +22,7 @@ RDEPEND="
 	dev-lang/swig
 	dev-libs/boost[python,${PYTHON_USEDEP}]
 	dev-libs/igraph
+	dev-util/cmake
 	dev-python/kyotocabinet-python[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.11[${PYTHON_USEDEP}]
 	sci-libs/scikits_learn[${PYTHON_USEDEP}]
