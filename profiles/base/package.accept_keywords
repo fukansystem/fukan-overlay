@@ -1,12 +1,6 @@
-# numpy
-dev-python/numpy ~amd64
-
 # scikits-learn
 sci-libs/scikits ~amd64
 sci-libs/scikits_learn ~amd64
-
-# scipy
-sci-libs/scipy ~amd64
 
 # igraph
 dev-libs/igraph ~amd64
