@@ -19,3 +19,6 @@ dev-vcs/git -python
 
 app-dicts/mecab-ipadic unicode
 app-text/mecab unicode
+
+# https://bugs.gentoo.org/692960
+dev-python/pip vanilla
