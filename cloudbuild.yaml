@@ -13,6 +13,11 @@ images:
 
 timeout: '21600s'  # 6 hours
 
+options:
+  volumes:
+  - name: 'binpkgs'
+    path: '/var/cache/binpkgs'
+
 steps:
 - id: 'pull.packages'
   name: 'gcr.io/cloud-builders/gsutil'
@@ -22,10 +27,7 @@ steps:
   - '-d'
   - '-r'
   - 'gs://${PROJECT_ID}-portage/packages'
-  - '/usr/portage/packages'
-  volumes:
-  - name: 'packages'
-    path: '/usr/portage/packages'
+  - '/var/cache/binpkgs'
 
 - id: 'emerge'
   name: 'gentoo/stage3-amd64-nomultilib'
@@ -75,9 +77,6 @@ steps:
       --buildpkg --usepkg \
       app-portage/gentoolkit
     eclean -dq -t 3w packages
-  volumes:
-  - name: 'packages'
-    path: '/usr/portage/packages'
 
 - id: 'push.packages'
   name: 'gcr.io/cloud-builders/gsutil'
@@ -86,11 +85,8 @@ steps:
   - 'rsync'
   - '-d'
   - '-r'
-  - '/usr/portage/packages'
+  - '/var/cache/binpkgs'
   - 'gs://${PROJECT_ID}-portage/packages'
-  volumes:
-  - name: 'packages'
-    path: '/usr/portage/packages'
   waitFor: ['emerge']
 
 - id: 'build'
