@@ -5,7 +5,7 @@
 #   $ gcloud builds submit .
 
 substitutions:
-  _PORTAGE_DATE: '20200226'
+  _PORTAGE_DATE: '20200303'
 
 images:
 - 'asia.gcr.io/${PROJECT_ID}/runtime:latest'
