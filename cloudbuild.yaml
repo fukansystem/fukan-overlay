@@ -49,10 +49,10 @@ steps:
     MAKEOPTS="-j2"
     PYTHON_TARGETS="python3_6"
     EOM
-    emerge-webrsync --revert=${_PORTAGE_DATE}
-    mkdir -p /usr/portage/distfiles
-    chown root:portage /usr/portage/distfiles
-    chmod 775 /usr/portage/distfiles
+    # Retry emerge-webrsync three times on failure.
+    emerge-webrsync --revert=${_PORTAGE_DATE} \
+      || emerge-webrsync --revert=${_PORTAGE_DATE} \
+      || emerge-webrsync --revert=${_PORTAGE_DATE}
     eselect profile set fukan-overlay:default/linux/amd64/no-multilib
     PACKAGES="
       dev-python/pip
