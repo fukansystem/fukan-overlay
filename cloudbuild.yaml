@@ -60,7 +60,6 @@ steps:
     emerge --quiet \
       --buildpkg --usepkg --rebuild-if-new-ver \
       --with-bdeps=y --onlydeps --newuse --deep \
-      --autounmask=y --autounmask-continue=y \
       $${PACKAGES}
     mkdir -p ./build
     chmod +x ./install_stage3.sh
@@ -71,7 +70,6 @@ steps:
     emerge --root=./build --quiet \
       --buildpkg --usepkg --rebuild-if-new-ver \
       --root-deps=rdeps --newuse --deep \
-      --autounmask=y --autounmask-continue=y \
       $${PACKAGES}
     emerge --quiet \
       --buildpkg --usepkg \
